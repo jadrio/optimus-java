@@ -1,0 +1,1 @@
+ID Obfuscation/Hashing Transformer for Java based on [Optimus-Go](https://github.com/pjebs/optimus-go)
