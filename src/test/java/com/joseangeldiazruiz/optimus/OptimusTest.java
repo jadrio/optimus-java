@@ -4,6 +4,7 @@ package com.joseangeldiazruiz.optimus;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class OptimusTest {
@@ -32,6 +33,12 @@ public class OptimusTest {
     public void testModInverse() throws Exception
     {
         assertEquals(modInverse, Optimus.ModInverse(prime));
+    }
+
+    @Test
+    public void testIsProbablyPrime()
+    {
+        assertTrue(Optimus.isProbablyPrime(3));
     }
 
 }

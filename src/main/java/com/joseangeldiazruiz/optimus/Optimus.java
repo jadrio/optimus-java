@@ -1,6 +1,5 @@
 package com.joseangeldiazruiz.optimus;
 
-
 import java.math.BigInteger;
 
 public class Optimus {
@@ -12,9 +11,13 @@ public class Optimus {
     private static final int MAX_INT = Integer.MAX_VALUE;
 
     public Optimus(int prime, int modInverse, int randomNumber) {
-        this.prime = prime;
-        this.modInverse = modInverse;
-        this.randomNumber = randomNumber;
+
+        if (!isProbablyPrime(prime))
+            throw new IllegalArgumentException(String.format("%d is not a prime number", prime));
+
+            this.prime = prime;
+            this.modInverse = modInverse;
+            this.randomNumber = randomNumber;
     }
 
     public Optimus(int prime, int randomNumber)
@@ -34,12 +37,18 @@ public class Optimus {
         return ((n ^ this.randomNumber) * this.modInverse ) & MAX_INT;
     }
 
-    public static int ModInverse(int prime)
+    public static int ModInverse(int n)
     {
-        BigInteger p = new BigInteger(String.valueOf(prime));
+
+        BigInteger p = BigInteger.valueOf(n);
         long l = Long.valueOf(MAX_INT) + 1L;
         BigInteger m = BigInteger.valueOf(l);
         return p.modInverse(m).intValue();
+    }
+
+    public static boolean isProbablyPrime(int n)
+    {
+        return BigInteger.valueOf(n - 1).nextProbablePrime().equals(BigInteger.valueOf(n));
     }
 
 }
